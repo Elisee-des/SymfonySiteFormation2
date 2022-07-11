@@ -1,0 +1,44 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Gestion des fichiers de chaque formation
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Gestion des fichiers de chaque formation</h2>
+		</div>
+
+		<div class="card-body">
+			<table id="example" class="table table-striped nowrap" style="width:100%">
+				<thead>
+					<tr>
+						<th>Theme de formation</th>
+						<th>Categorie de formation</th>
+						<th>Candidature</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for formation in formations %}
+						<tr>
+							<td>{{formation.titre}}</td>
+							<td>{{formation.categorie.nom}}</td>
+							<td>
+								<a href="{{ path("admin_formations_candidatures", {id: formation.id}) }}">candidature({{formation.candidatures|length}})</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

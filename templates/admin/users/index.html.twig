@@ -1,0 +1,60 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Gestion des utilisateurs
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Gestion des utilisateurs</h2>
+		</div>
+
+		<div>
+			<a href="{{ path("admin_utilisateur_creation") }}" class="btn btn-primary float-right btnAction">Ajouter une utilisateur</a>
+		</div>
+		<div class="card-body">
+			<table id="example" class="table table-striped nowrap" style="width:100%">
+				<thead>
+					<tr>
+						<th>Image</th>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>Telephone</th>
+						<th>Email</th>
+						<th>DateCreatiion</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>
+								{% if user.photo %}
+									<img src="{{ asset("images/"~user.photo)}} " alt="" width="50px">
+								{% endif %}
+							</td>
+							<td>{{user.nom}}</td>
+							<td>{{user.prenom}}</td>
+							<td>{{user.telephone}}</td>
+							<td>{{user.email}}</td>
+							<td>{{user.dateCreation|date("m-d-Y")}}</td>
+							<td>
+								<a href="{{ path("admin_utilisateur_edition", {id: user.id}) }}" class="btn btn-primary">Editer</a>
+								<a href="{{ path("admin_utilisateur_suppression", {id: user.id}) }}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir supprimer cette cet utilisateur ?')">Supprimer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

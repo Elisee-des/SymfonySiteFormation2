@@ -1,0 +1,42 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Gestion des fichiers
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Gestion des fichiers</h2>
+		</div>
+
+		<div class="card-body">
+			{% for fichier in fichiers %}
+				<div class="text-center">
+				<h4>Photo d'identité</h4><br>
+					<img src="{{ asset("fichiers/"~fichier.photo) }}" class="text-center" width="1220px" alt="">
+				</div><br><hr>
+				<div class="text-center">
+				<h4>CV</h4><br>
+					<img src="{{ asset("fichiers/"~fichier.cv) }}" class="text-center" width="1220px" alt="">
+				</div><br><hr>
+				<div class="text-center">
+				<h4>Lettre de Motivation</h4><br>
+					<img src="{{ asset("fichiers/"~fichier.lettreMotivation) }}" class="text-center" width="1220px" alt="">
+				</div><br><hr>
+				<div class="text-center">
+				<h4>Diplome</h4><br>
+					<img src="{{ asset("fichiers/"~fichier.diplome) }}" class="text-center" width="1220px" alt="">
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

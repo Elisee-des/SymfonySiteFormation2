@@ -1,0 +1,62 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}
+	Tableau de bord
+{% endblock %}
+
+{% block body %}
+
+	<div class="main">
+		<h2>Tableau de bord</h2><br>
+		<div class="card shadow border-dark" style="width: 100%;">
+			<div class="container"><br>
+				<div class="row">
+					<div class="col-6">
+						<div class="card text-lelf">
+							<h2>Total Formation: {{totalFormations}}</h2><hr>
+							<div>
+								<a href="{{ path("admin_formation_liste") }}" class="btn btn-outline-primary">Aller voir</a>
+							</div>
+						</div>
+						<div class="card text-lelf">
+							<h2>Total Categorie: {{totalCategories}}</h2><hr>
+							<div>
+								<a href="{{ path("admin_categorie") }}" class="btn btn-outline-primary">Aller voir</a>
+							</div>
+						</div>
+						<div class="card text-lelf">
+							<h2>Total Candidature: {{totalCandidatures}}</h2><hr>
+							<div>
+								<a href="{{ path("admin_candidature_liste") }}" class="btn btn-outline-primary">Aller voir</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 text-lelf">
+						<div class="card">
+							<h2>Naviguer sur le Site</h2><hr>
+							<div>
+								<a href="{{ path('main') }}" class="btn btn-outline-dark">Accueil</a>
+								<a href="{{ path('categories') }}" class="btn btn-outline-dark">categories</a>
+								<a href="{{ path('formations') }}" class="btn btn-outline-dark">Formation</a>
+								<a href="{{ path('admin_formations_liste') }}" class="btn btn-outline-dark">Fichiers</a>
+							</div>
+						</div>
+						<div class="card text-lelf">
+							<h2>Total Ville: {{totalVille}}</h2><hr>
+							<div>
+								<a href="{{ path("ville_liste") }}" class="btn btn-outline-primary">Aller voir</a>
+							</div>
+						</div>
+						<div class="card text-lelf">
+							<h2>Total Utilisateur {{totalUser}}</h2><hr>
+							<div>
+								<a href="{{ path("admin_utilisateur_liste") }}" class="btn btn-outline-primary">Aller voir</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

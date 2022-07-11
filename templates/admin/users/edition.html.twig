@@ -1,0 +1,14 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Editer la utilisateur
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<div class="card-body float-center">
+			<h2>Modifier la utilisateur</h2><br>
+        {% form_theme form "bootstrap_4_horizontal_layout.html.twig" %}
+		{{ form(form) }}
+		</div>
+	{% endblock %}

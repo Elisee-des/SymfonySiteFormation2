@@ -1,0 +1,19 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Importation la ville
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<div class="card-hearder text-center">
+			<h2>Importer des villes
+			</span>
+		</h2>
+		<span>(NB: Dois etes un fichier excel)<br><br>
+		</div>
+		{% form_theme form "bootstrap_4_layout.html.twig" %}
+		{{ form(form) }}
+			<div class="card-body"></div>
+		</div>
+	{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Liste des candidatures
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Liste des candidatures de la formation "{{titre}}"</h2>
+		</div>
+
+		<div>
+			<a href="{{ path("admin_candidature_creation") }}" class="btn btn-primary float-right btnAction">Ajouter une candidature</a>
+		</div>
+		<div class="card-body">
+			<table id="example" class="table table-striped nowrap" style="width:100%">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>NiveauEtude</th>
+						<th>Email</th>
+						<th>Telephone</th>
+						<th>DateInscription</th>
+						<th>Status</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for candidat in candidats %}
+						<tr>
+							<td>{{candidat.nom}}</td>
+							<td>{{candidat.prenom}}</td>
+							<td>{{candidat.niveauEtude}}</td>
+							<td>{{candidat.email}}</td>
+							<td>{{candidat.telephone}}</td>
+							<td>{{candidat.dateCretion|date("m/d/Y")}}</td>
+							<td>
+								{% if candidat.status == 'accepter' %}
+									<button class="btn btn-success">Accepter</button>
+								{% elseif candidat.status == 'attente' %}
+									<button class="btn btn-warning">Attente</button>
+								{% elseif candidat.status == 'rejeter' %}
+									<button class="btn btn-dark">Rejeter</button>
+								{% endif %}
+							</td>
+							<td>
+								<a href="{{ path("admin_formation_gestion_status", {id: candidat.id}) }} " class="btn btn-secondary">Status</a>
+								<a href="{{ path("admin_formation_candidature_suppression", {id: candidat.id}) }}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir supprimer cette candidature ?')">supprimer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

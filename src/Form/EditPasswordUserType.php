@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
+class EditPasswordUserType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('password', RepeatedType::class, [
+                "type" => PasswordType::class,
+                "constraints" => [
+                    new NotBlank(),
+                    new Length(null, 5)
+                ],
+                "first_options" => [
+                    "label" => "Saisir un nouveau mot de passe",
+                ],
+                "second_options" => [
+                    "label" => "Repeter le nouveau mot de passe",
+                ],
+                "invalid_message" => "Veuaille entrez un mot de passe valide"
+            ])
+            ->add("Modifier", SubmitType::class)
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            // Configure your form options here
+        ]);
+    }
+}

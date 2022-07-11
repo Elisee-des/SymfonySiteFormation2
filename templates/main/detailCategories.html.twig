@@ -1,0 +1,67 @@
+{% extends "base.main.html.twig" %}
+
+{% block titre %}{% endblock %}
+
+{% block main %}
+
+	<div id="pricing" class="pricing-tables">
+		<div class="tables-left-dec">
+			<img src="{{ asset("asset/images/tables-left-dec.png") }}" alt="">
+		</div>
+		<div class="tables-right-dec">
+			<img src="{{ asset("asset/images/tables-right-dec.png") }}" alt="">
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 offset-lg-3">
+					<div class="section-heading">
+						<h2>
+							<em>La formation </em>
+							<span>{{nom}}</span>
+						</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				{% for formation in formations %}
+
+					<div class="col-lg-6">
+						<div class="item first-item">
+							<h4>THEME:
+								{{ formation.titre }}</h4><br>
+							<div class="img">
+								<img class="card-img-top" src="{{ asset("images/"~formation.image) }}" alt="">
+							</div>
+							<div class="card-body">
+								<h5>Description</h5><br>
+								<p class="card-text">
+									{{ formation.description|slice(0, 100) }}
+								</p>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">Nombre de place:
+									{{ formation.nombrePlace }}
+								</li>
+								<li class="list-group-item">Debut de formation:
+									{{ formation.dateDebutFormation|date("m/d/Y") }}
+								</li>
+								<li class="list-group-item">Fin de formation:
+									{{ formation.dateFinFormation|date("m/d/Y") }}
+								</li>
+								<li class="list-group-item">Date de publication:
+									{{ formation.datePublication|date("m/d/Y") }}
+								</li>
+							</ul>
+							<div>
+								<a href="{{ path("detail_formation", {id: formation.id}) }}" class="main-blue-button-hover btn btn-danger">Detail</a>
+								<a href="#" class="main-red-button-hover btn btn-primary">Postuler</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+<nav class="pcoded-navbar">
+	<div class="sidebar_toggle">
+		<a href="#">
+			<i class="icon-close icons"></i>
+		</a>
+	</div>
+	<div class="pcoded-inner-navbar main-menu">
+		<div class="">
+			<div class="main-menu-header">
+				<img class="img-80 img-radius" src="{{ asset("assetss/images/avatar-4.jpg") }}" alt="User-Profile-Image">
+				<div class="user-details">
+					<span id="more-details">Nom user</span>
+				</div>
+			</div>
+		</div><br>
+		<ul class="pcoded-item pcoded-left-item">
+			<li class="active">
+				<a href="{{ path("utilisateur") }}" class="waves-effect waves-dark">
+					<span class="pcoded-micon">
+						<i class="ti-home"></i>
+						<b>D</b>
+					</span>
+					<span class="pcoded-mtext" data-i18n="nav.dash.main">Tableau de board</span>
+					<span class="pcoded-mcaret"></span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ path("formations") }}">
+					<span class="pcoded-micon">
+						<i class="fa fa-list" aria-hidden="true"></i>
+						<b>D</b>
+					</span>
+					Formations</a>
+			</li>
+			<li>
+				<a href="{{ path("utilisateur_candidature_liste") }}">
+					<span class="pcoded-micon">
+						<i class="fa fa-indent" aria-hidden="true"></i>
+						<b>D</b>
+					</span>
+					Mes candidatures</a>
+			</li>
+			<li>
+				<a href="{{ path("user_favoris_foramtion") }}">
+					<span class="pcoded-micon">
+						<i class="fa fa-star-half-o" aria-hidden="true"></i>
+						<b>D</b>
+					</span>
+					Mes Favories</a>
+			</li>
+			<li>
+				<a href="{{ path("utilisateur_contact") }}">
+					<span class="pcoded-micon">
+						<i class="fa fa-contao" aria-hidden="true"></i>
+						<b>D</b>
+					</span>
+					Contact</a>
+			</li>
+			<li>
+				<a href="{{ path("utlisateur_parametre") }}">
+					<span class="pcoded-micon">
+						<i class="fa fa-user-circle" aria-hidden="true"></i>
+						<b>D</b>
+					</span>
+					Parametres</a>
+			</li>
+		</ul>
+	</div>
+	<div></div>
+</nav>

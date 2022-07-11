@@ -1,0 +1,60 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Gestion des candidatures
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Gestion des candidatures</h2>
+		</div>
+
+		<div>
+			<a href="{{ path("admin_candidature_creation") }}" class="btn btn-primary float-right">Ajouter une candidature</a>
+		</div>
+		<div class="card-body">
+			<table id="example" class="table table-striped nowrap" style="width:100%">
+				<thead>
+					<tr>
+						<th>Formation</th>
+						<th>Categorie</th>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>NiveauEtude</th>
+						<th>Email</th>
+						<th>Telephone</th>
+						<th>Ville</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for candidature in candidatures %}
+						<tr>
+							<td>{{candidature.formation.titre}}</td>
+							<td>{{candidature.formation.categorie.nom}}</td>
+							<td>{{candidature.nom}}</td>
+							<td>{{candidature.prenom}}</td>
+							<td>{{candidature.niveauEtude}}</td>
+							<td>{{candidature.email}}</td>
+							<td>{{candidature.telephone}}</td>
+							<td>{{candidature.user.ville.nom}}</td>
+							<td>
+								<a href="{{ path("admin_candidature_edition", {id: candidature.id}) }}" class="btn btn-primary">Editer</a>
+								<a href="{{ path("admin_candidature_suppression", {id: candidature.id}) }}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir supprimer cette candidature ?')">Supprimer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

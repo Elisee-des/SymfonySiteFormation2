@@ -1,0 +1,61 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Gestion des formations
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Gestion des formations</h2>
+		</div>
+
+		<div>
+			<a href="{{ path("admin_formation_creation") }}" class="btn btn-primary float-right btnAction">Ajouter une formation</a>
+		</div>
+		<div class="card-body">
+			<table id="example" class="table table-striped nowrap" style="width:100%">
+				<thead>
+					<tr>
+						<th>Theme de formation</th>
+						<th>Categorie de formation</th>
+						<th>Candidature</th>
+						<th>Actif</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for formation in formations %}
+						<tr>
+							<td>{{formation.titre}}</td>
+							<td>{{formation.categorie.nom}}</td>
+							<td>
+								<a href="{{ path("admin_formation_candidature", {id: formation.id}) }}">candidature({{formation.candidatures|length}})</a>
+							</td>
+							<td>
+								{% if formation.isActif == true %}
+								<button class="btn btn-primary">oui</button>
+								{% else %}
+									<button class="btn btn-danger">non</button>
+								{% endif %}
+							</td>
+							<td>
+								<a href="{{ path("admin_formation_detail", {id: formation.id}) }}" class="btn btn-secondary">Detail/Option</a>
+								<a href="{{ path("admin_formation_edition", {id: formation.id}) }}" class="btn btn-primary">Editer</a>
+								<a href="{{ path("admin_formation_suppression", {id: formation.id}) }}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir supprimer cette formation ?')">Supprimer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}{% endblock %}
+
+{% block body %}
+
+	<div>
+		<div class="container">
+			<div class="col-lg-6 offset-lg-3">
+				<div class="section-heading">
+					<h2>Contact par Email
+					</h2>
+				</div>
+				<div>
+					{% form_theme form  "bootstrap_4_layout.html.twig" %}
+					{{form(form)}}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

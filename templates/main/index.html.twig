@@ -1,0 +1,18 @@
+{% extends "base.main.html.twig" %}
+
+{% block titre %}{% endblock %}
+
+{% block categories %}
+	{% for categorie in categories %}
+		<div class="item">
+			<h4>{{categorie.description}}</h4>
+			<div class="icon">
+				<img src="{{ asset("images/"~categorie.image) }}" width="50px" alt="image">
+			</div>
+			<p>{{categorie.petitedescription}}</p>
+		</div>
+	{% endfor %}
+
+{% endblock %}
+
+{% block body %}{% endblock %}

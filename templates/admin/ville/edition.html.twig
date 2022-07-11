@@ -1,0 +1,16 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Editer la ville
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<div class="card-hearder">
+			<h2>Modifier la Ville</h2>
+		</div>
+        {% form_theme form "bootstrap_4_horizontal_layout.html.twig" %}
+		{{ form(form) }}
+			<div class="card-body"></div>
+		</div>
+	{% endblock %}

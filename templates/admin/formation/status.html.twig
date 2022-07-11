@@ -1,0 +1,28 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Liste des status
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Gestion de status des candidatures"</h2>
+		</div>
+
+		<div class="card-body">
+            <div class="container">
+			{% form_theme form "bootstrap_4_layout.html.twig" %}
+                {{ form(form) }}
+            </div>
+        </div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

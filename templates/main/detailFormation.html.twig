@@ -1,0 +1,71 @@
+{% extends "base.main.html.twig" %}
+
+{% block titre %}{% endblock %}
+
+{% block main %}
+
+	<div id="pricing" class="pricing-tables">
+		<div class="tables-left-dec">
+			<img src="{{ asset("asset/images/tables-left-dec.png") }}" alt="">
+		</div>
+		<div class="tables-right-dec">
+			<img src="{{ asset("asset/images/tables-right-dec.png") }}" alt="">
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 offset-lg-3">
+					<div class="section-heading">
+						<h2>Selectionner
+							<em>formation</em>
+							qui vous interesse et
+							<span>postuler</span>
+						</h2>
+						<span>Our Plans</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="item first-item">
+						<h2>THEME:
+							{{ titre }}</h2><br>
+						<div class="img">
+							<img class="card-img-top" src="{{ asset("images/"~formation.image) }}" alt="">
+						</div>
+						<div class="card-body">
+							<h3>Description</h3><br>
+							<div class="card"><br>
+								<p class="card-text">
+									{{description }}
+								</p><br>
+							</div>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">
+								<h5>Nombre de place:
+									{{nombrePlace }}</h5>
+							</li>
+							<li class="list-group-item">
+								<h5>Debut de formation:
+									{{ dateDebutFormation|date("m/d/Y") }}</h5>
+							</li>
+							<li class="list-group-item">
+								<h5>Fin de formation:
+									{{  dateFinFormation|date("m/d/Y") }}</h5>
+							</li>
+							<li class="list-group-item">
+								<h5>Date de publication:
+									{{  datePublication|date("m/d/Y") }}</h5>
+							</li>
+						</ul>
+						<div class="main-blue-button-hover">
+							<a href="{{ path("user_postule_detail_foramtion", {id: formation}) }}">Postuler maintenant</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Gestion des categories
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Gestion des categories</h2>
+		</div>
+
+		<div>
+			<a href="{{ path("admin_creation_categorie") }}" class="btn btn-primary float-right">Ajouter une categorie</a>
+		</div>
+		<div class="card-body">
+			<table id="example" class="table table-striped nowrap" style="width:100%">
+				<thead>
+					<tr>
+						<th>Image</th>
+						<th>Nom</th>
+						<th>Description</th>
+						<th>PetiteDescription</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for categorie in categories %}
+						<tr>
+							<td>
+								{% if categorie.image %}
+									<img src="{{ asset("images/"~categorie.image) }}" alt="" width="50px" >
+								{% endif %}
+							</td>
+							<td>{{categorie.nom}}</td>
+							<td>{{categorie.description|slice(0, 20)}}</td>
+							<td>{{categorie.petitedescription|slice(0, 20)}}</td>
+							<td>
+								<a href="{{ path("admin_edition_categorie", {id: categorie.id}) }}" class="btn btn-primary">Editer</a>
+								<a href="{{ path("admin_suppresion_categorie", {id: categorie.id}) }}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir supprimer cette categorie ?')">Supprimer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

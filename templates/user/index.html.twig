@@ -1,0 +1,138 @@
+{% extends "base.user.html.twig" %}
+
+{% block titre %}{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="main-body">
+			<div class="row gutters-sm">
+				<div class="col-md-4 mb-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex flex-column align-items-center text-center">
+								<img src="{{ asset("images/"~app.user.photo) }}" alt="image Profit" class="rounded-circle" width="200px">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="card mb-3">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Nom</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.nom}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Prenom</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.prenom}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Email</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.email}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Mobil</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.telephone}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Ville</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.ville}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Compte cree le</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.dateCreation|date("m/d/Y")}}
+								</div>
+							</div>
+							<hr>
+						</div>
+					</div>
+				</div>
+			</div><br>
+			<div class="content">
+				<div class="row">
+					<div class="col-6">
+						<div class="card">
+							<h2 class="text-center">Dernier Candidature</h2><br>
+							<div class="">
+								<table class="table table-striped nowrap" style="width:100%">
+									<thead>
+										<tr>
+											<th>Formation</th>
+											<th>Categories</th>
+											<th>Date de debut</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for candidature in candidatures %}
+											<tr>
+												<td>{{candidature.formation.titre}}</td>
+												<td>{{candidature.formation.categorie.nom}}</td>
+												<td>{{candidature.formation.datePublication|date("m/d/Y")}}</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div><br>
+					<div class="col-6">
+						<div class="card">
+							<h2 class="text-center">Candidature suivis</h2><br>
+							<div class="">
+								<table class="table table-striped nowrap" style="width:100%">
+									<thead>
+										<tr>
+											<th>Formation</th>
+											<th>Categories</th>
+											<th>Date de debut</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for suivi in suivis %}
+											{% if suivi.formation.suivis > 0 %}
+												<tr>
+													<td>{{suivi.formation.titre}}</td>
+													<td>{{suivi.formation.categorie.nom}}</td>
+													<td>{{suivi.formation.datePublication|date("m/d/Y")}}</td>
+												</tr>
+											{% endif %}
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

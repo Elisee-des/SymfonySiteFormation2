@@ -1,0 +1,50 @@
+{% extends "base.user.html.twig" %}
+
+{% block titre %}Gestion des formations a suivre
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Gestion des formations a suivre</h2>
+		</div>
+
+		<div class="card-body">
+			<table id="example" class="table table-striped nowrap" style="width:100%">
+				<thead>
+					<tr>
+						<th>Formation</th>
+						<th>Categorie</th>
+						<th>Nombre place</th>
+						<th>Debut</th>
+						<th>Fin</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for formation in formations %}
+						<tr>
+							<td>{{formation.titre}}</td>
+							<td>{{formation.categorie.nom}}</td>
+							<td>{{formation.nombrePlace}}</td>
+							<td>{{formation.dateDebutFormation|date("m/d/Y")}}</td>
+							<td>{{formation.dateFinFormation|date("m/d/Y")}}</td>
+							<td>
+								<a href="{{ path("user_postul_foramtion", {id: formation.id}) }}" class="btn btn-primary">Postuler</a>
+								<a href="{{ path("user_enlever_foramtion", {id: formation.id}) }}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir retire cette formation de la liste de suivis ?')">Retirer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

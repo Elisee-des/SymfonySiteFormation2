@@ -1,0 +1,54 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Gestion des formations
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Detail de la formation
+				{{titre}}</h2><br>
+		</div>
+
+		<div class="card">
+			<div class="container">
+				<div class="row">
+					<div class="col-6">
+						<div class="content"><br>
+							<h3>Theme: {{titre}}</h3><hr><br>
+                            <h3>Categorie: {{nomCategorie}}</h3><hr><br>
+                            <h3>Tolal des candidatures: </h3><br>
+							<div class="card">
+								<h4>Description</h4>
+								<h6>
+									{{description}}
+								</h6>
+							</div>
+						</div>
+					</div>
+					<div class="col-6"><br>
+						<h3>Nombre de place:
+							{{nombrePlace}}</h3><hr><br>
+						<h3>Date de publication:
+							{{datePublication|date("m/d/Y")}}</h3><hr><br>
+						<h3>Date de debut formation:
+							{{dateDebutFormation|date("m/d/Y")}}</h3><hr><br>
+						<h3>Date de fin formation:
+							{{dateFinFormation|date("m/d/Y")}}</h3><hr><br>
+							<a href="{{ path("admin_formation_active_formation", {id}) }}" class="btn btn-primary">Activer la formation</a>
+							<a href="{{ path("admin_formation_desactive_formation", {id}) }}" class="btn btn-danger">Desctiver la formation</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

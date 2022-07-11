@@ -1,0 +1,83 @@
+{% extends "base.user.html.twig" %}
+
+{% block titre %}{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div
+			class="main-body">
+			<div class="row gutters-sm">
+				<div class="col-md-4 mb-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex flex-column align-items-center text-center">
+								<img
+								src="{{ asset("images/"~app.user.photo) }}" alt="image Profit" class="rounded-circle" width="200px">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="card mb-3">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Nom</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.nom}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Prenom</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.prenom}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Email</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.email}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Mobil</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.telephone}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Ville</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{app.user.ville}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-12">
+									<a href="{{ path("utilisateur_edit_profil_parametre") }}" class="btn btn-primary">Modifier Profil</a>
+									<a href="{{ path("utilisateur_edit_photo_parametre") }}" class="btn btn-outline-primary">Modifier Image</a>
+									<a href="{{ path("utilisateur_edit_password_parametre") }}" class="btn btn-outline-info">Modifier Mot de passe</a>
+									<a href="{{ path("utilisateur_parametre_desactivition") }}" class="btn btn-danger" onclick="return confirm('Cette action supprimera votre compte.Continuer ?')">Supprimer mon compte</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

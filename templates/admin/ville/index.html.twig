@@ -1,0 +1,50 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Gestion des villes
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Gestion des villes</h2>
+		</div>
+
+		<div class="mb-1">
+			<a href="{{ path("admin_exportation_ville") }}" class="btn btn-info float-right">Exporter des villes</a> 
+			<a href="{{ path("admin_importation_ville") }}" class="btn btn-secondary float-right">Importer des villes</a> 
+			<a href="{{ path("admin_creation_ville") }}" class="btn btn-primary float-right">Ajouter une ville</a>
+		</div>
+		<div class="card-body">
+			<table id="example" class="table table-striped nowrap" style="width:100%">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nom</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for ville in villes %}
+						<tr>
+							<td>{{ville.id}}</td>
+							<td>{{ville.nom}}</td>
+							<td>
+								<a href="{{ path("admin_edition_ville", {id: ville.id}) }}" class="btn btn-primary">Editer</a>
+								<a href="{{ path("admin_suppresion_ville", {id: ville.id}) }}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir supprimer cette cotisations ?')">Supprimer</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

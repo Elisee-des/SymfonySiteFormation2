@@ -1,0 +1,60 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Liste des fichiers de candidature
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Liste des fichier de candidatures de la formation "{{titre}}"</h2>
+		</div>
+
+		<div class="card-body">
+			{% for candidat in candidats %}
+				<hr>
+				<h3 class="text-center">Nom Prenom:
+					{{candidat.nom}}
+					{{candidat.nom}}</h3>
+
+				<hr>
+				<h3 class="text-center">cv</h3>
+				<hr>
+				<div class="img text-center">
+					<img src="{{ asset("fichiers/"~candidat.cv) }}" width="1200px" alt="">
+				</div>
+
+				<hr>
+				<h3 class="text-center">Photo</h3>
+				<hr>
+				<div class="img text-center">
+					<img src="{{ asset("fichiers/"~candidat.photo) }}" width="1200px" alt="">
+				</div>
+
+				<hr>
+				<h3 class="text-center">Diplome</h3>
+				<hr>
+				<div class="img text-center">
+					<img src="{{ asset("fichiers/"~candidat.diplome) }}" width="1200px" alt="">
+				</div>
+
+				<hr>
+				<h3 class="text-center">Lettre de motivation</h3>
+				<hr>
+				<div class="img text-center">
+					<img src="{{ asset("fichiers/"~candidat.lettreMotivation) }}" width="1200px" alt="">
+				</div>
+				<span>Fin</span>
+				<hr><br><br><br><br>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}

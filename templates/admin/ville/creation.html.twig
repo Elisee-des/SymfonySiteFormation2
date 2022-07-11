@@ -1,0 +1,19 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Gestion des villes
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<div class="card-body">
+		<div class="card-hearder text-center">
+			<h2>Ajouter une Ville</h2>
+		</div>
+        {% form_theme form "bootstrap_4_layout.html.twig" %}
+
+        {{ form(form) }}
+		
+		</div>
+	</div>
+{% endblock %}

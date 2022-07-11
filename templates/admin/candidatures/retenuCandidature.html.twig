@@ -1,0 +1,54 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Liste des candidatures retenu de la formation
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<br>
+		<div class="card-hearder text-center">
+			<h2>Liste des candidatures retenues de la formation ""{{titre}}""</h2>
+		</div><br>
+
+		<div>
+			<a href="" class="btn btn-dark float-right btnAction">Exporter les donneés</a>
+		</div>
+
+		<div class="card-body">
+			<table id="example" class="table table-striped nowrap" style="width:100%">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>NiveauEtude</th>
+						<th>Email</th>
+						<th>Telephone</th>
+						<th>DateInscription</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for retenue in retenues %}
+						{% if retenue.status == 'accepter' %}
+							<tr>
+								<td>{{retenue.nom}}</td>
+								<td>{{retenue.prenom}}</td>
+								<td>{{retenue.niveauEtude}}</td>
+								<td>{{retenue.email}}</td>
+								<td>{{retenue.telephone}}</td>
+								<td>{{retenue.dateCretion|date("m/d/Y")}}</td>
+							</tr>
+						{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}
