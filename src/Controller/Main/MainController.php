@@ -127,10 +127,24 @@ class MainController extends AbstractController
     {
         $form = $this->createForm(ContactssType::class);
 
-        $form->handleRequest($request);
+        $contact = $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) { 
+            $prenom = $contact->get("prenom")->getData();
+            $email = $contact->get("email")->getData();
+            $sujet = $contact->get("sujet")->getData();
+            $message = $contact->get("message")->getData()." ' envoyez par ".$prenom." a d'adress email: ".$email;
             
+            $email = new Mail();
+            $email->sendMailToAdmin($sujet, $message);
+
+            $this->addFlash(
+               'success',
+               'Votre email a ete envoyez avrc success. nous concterons plutard'
+            );
+
+            var_dump($email);
+
         }
 
         return $this->render('main/contactss.html.twig', [
