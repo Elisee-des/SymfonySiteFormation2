@@ -22,7 +22,8 @@ class CandidatureController extends AbstractController
         $candidatures = $user->getCandidatures();
 
         return $this->render("user/candidature/candidature.html.twig", [
-            "candidatures" => $candidatures
+            "candidatures" => $candidatures,
+            'admin' => $this->getUser()
         ]);
     }
 

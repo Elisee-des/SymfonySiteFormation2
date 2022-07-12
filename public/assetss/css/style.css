@@ -3045,7 +3045,8 @@ a[data-toggle="lightbox"] .img-fluid {
   font-weight: 500; }
 
 .img-radius {
-  border-radius: 50%; }
+  clip-path:ellipse(50% 50%);
+  }
 
 .version .nav li:first-child {
   border-top: 1px solid #ddd;

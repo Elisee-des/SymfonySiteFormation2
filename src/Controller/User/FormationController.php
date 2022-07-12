@@ -60,6 +60,7 @@ class FormationController extends AbstractController
 
         return $this->render('user/candidature.html.twig', [
             'form' => $form->createView(),
+            'admin' => $this->getUser()
             // 'formation' => $formation
         ]);
     }
@@ -110,7 +111,8 @@ class FormationController extends AbstractController
         $formations = $formationRepository->findBy(["suivis" => true], ["id" => "DESC"]);
 
         return $this->render("user/formation/favoris.html.twig", [
-            "formations" => $formations
+            "formations" => $formations,
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -159,6 +161,7 @@ class FormationController extends AbstractController
 
         return $this->render('user/formation/candidature.html.twig', [
             'form' => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 }

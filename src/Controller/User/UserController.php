@@ -38,7 +38,8 @@ class UserController extends AbstractController
 
         return $this->render('user/index.html.twig', [
             'candidatures' => $candidatures,
-            'suivis' => $formationSuivis
+            'suivis' => $formationSuivis,
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -47,7 +48,9 @@ class UserController extends AbstractController
      */
     public function parametre(): Response
     {
-        return $this->render('user/parametre/index.html.twig', []);
+        return $this->render('user/parametre/index.html.twig', [
+            'admin' => $this->getUser()
+        ]);
     }
 
     /**
@@ -75,7 +78,8 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/parametre/editProfil.html.twig', [
-            "form" => $form->createView()
+            "form" => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -114,7 +118,8 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/parametre/editPhoto.html.twig', [
-            "form" => $form->createView()
+            "form" => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -148,7 +153,8 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/parametre/editPassword.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 

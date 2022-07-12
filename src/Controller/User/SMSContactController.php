@@ -15,7 +15,7 @@ class SMSContactController extends AbstractController
      */
     public function contact(): Response
     {
-        return $this->render('user/contact/index.html.twig', []);
+        return $this->render('user/contact/index.html.twig', ['admin' => $this->getUser()]);
     }
 
     /**
@@ -66,7 +66,8 @@ class SMSContactController extends AbstractController
         }
 
         return $this->render('user/contact/sms.html.twig', [
-            "form" => $form->createView()
+            "form" => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 }

@@ -47,7 +47,8 @@ class EmailContactController extends AbstractController
 
 
         return $this->render('user/contact/email.html.twig', [
-            "form" => $form->createView()
+            "form" => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 }

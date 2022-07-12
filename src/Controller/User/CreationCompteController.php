@@ -46,7 +46,8 @@ class CreationCompteController extends AbstractController
         }
 
         return $this->render("main/creationCompte.html.twig", [
-            "form"=>$form->createView()
+            "form"=>$form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 

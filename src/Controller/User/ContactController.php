@@ -17,7 +17,7 @@ class ContactController extends AbstractController
      */
     public function contact(): Response
     {
-        return $this->render('user/contact/index.html.twig', []);
+        return $this->render('user/contact/index.html.twig', ['admin' => $this->getUser()]);
     }
 
 }
