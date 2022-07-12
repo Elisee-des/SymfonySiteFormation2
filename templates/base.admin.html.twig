@@ -40,8 +40,13 @@
 		rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all"/>
 		<!-- Style.css -->
 		<link rel="stylesheet" type="text/css" href="{{ asset("assets/css/style.css") }}">
+		<link rel="stylesheet" href="https://unpkg.com/sleek-dashboard/dist/assets/css/sleek.min.css">
+		<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-		<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"/>
 	</head>
 
 	<body>
@@ -130,60 +135,6 @@
 								<i class="ti-more"></i>
 							</a>
 						</div>
-
-						{# <div class="navbar-container container-fluid">
-																																					<ul class="nav-left">
-																																						<li>
-																																							<div class="sidebar_toggle">
-																																								<a href="javascript:void(0)">
-																																									<i class="ti-menu"></i>
-																																								</a>
-																																							</div>
-																																						</li>
-																																						<li>
-																																							<a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
-																																								<i class="ti-fullscreen"></i>
-																																							</a>
-																																						</li>
-																																					</ul>
-																																					<ul class="nav-right">
-																														
-																																						<li class="user-profile header-notification">
-																																							<a href="#!" class="waves-effect waves-light">
-																																								<img src="{{ asset("assets/images/avatar-4.jpg") }}" class="img-radius" alt="User-Profile-Image">
-																																								<span>Nom user</span>
-																																								<i class="ti-angle-down"></i>
-																																							</a>
-																																							<ul class="show-notification profile-notification">
-																																								<li class="waves-effect waves-light">
-																																									<a href="#!">
-																																										<i class="ti-settings"></i>
-																																										Settings
-																																									</a>
-																																								</li>
-																																								<li class="waves-effect waves-light">
-																																									<a href="user-profile.html">
-																																										<i class="ti-user"></i>
-																																										Profile
-																																									</a>
-																																								</li>
-																																								<li class="waves-effect waves-light">
-																																									<a href="email-inbox.html">
-																																										<i class="ti-email"></i>
-																																										My Messages
-																																									</a>
-																																								</li>
-																																								<li class="waves-effect waves-light">
-																																									<a href="auth-lock-screen.html">
-																																										<i class="ti-lock"></i>
-																																										Lock Screen
-																																									</a>
-																																								</li>
-																																								<li class="waves-effect waves-light">
-																																									<a href="auth-normal-sign-in.html">
-																																										<i class="ti-layout-sidebar-left"></i>
-																																										Logout
-																															</div> #}
 					</div>
 				</nav>
 
@@ -219,8 +170,8 @@
 									</div>
 								</div><br>
 								<ul class="pcoded-item pcoded-left-item">
-									<li class="active">
-										<a href="{{ path('admin_home') }}" class="waves-effect waves-dark">
+									<li class="{{ isActive1(['admin_home']) }}">
+										<a href="{{ path('admin_home') }}" class="waves-effect waves-dark ">
 											<span class="pcoded-micon">
 												<i class="ti-home"></i>
 												<b>D</b>
@@ -229,15 +180,15 @@
 											<span class="pcoded-mcaret"></span>
 										</a>
 									</li>
-									<li class="book-information-variant">
-										<a href="{{ path("admin_formation_liste") }}" class="waves-effect waves-dark">
+									<li class="book-information-variant {{ isActive1(["admin_formation_liste", "admin_formation_detail", " admin_formation_creation", " admin_formation_edition", " admin_formation_suppression"," admin_formation_candidature"," admin_formation_candidaure_suppression"," admin_formation_active_formation"," admin_formation_desactive_formation"," admin_formation_gestion_status"]) }}">
+										<a href="{{ path("admin_formation_liste") }}" class="waves-effect waves-dark ">
 											<span class="pcoded-micon">
 												<i class="fa fa-list" aria-hidden="true"></i>
 												<b>D</b>
 											</span>Formation
 										</a>
 									</li>
-									<li class="">
+									<li class="{{ isActive1(["admin_candidature_liste", "admin_candidature_creation", "admin_candidature_edition", "admin_candidature_suppression"]) }}">
 										<a href="{{ path("admin_candidature_liste") }}" class="">
 											<span class="pcoded-micon">
 												<i class="ti-view-list-alt"></i>
@@ -245,7 +196,7 @@
 											</span>Candidature
 										</a>
 									</li>
-									<li class="">
+									<li class="{{ isActive1(["admin_formations_liste", "admin_formations_candidatures"]) }}">
 										<a href="{{ path("admin_formations_liste") }}" class="">
 											<span class="pcoded-micon">
 												<i class="ti-archive" aria-hidden="true"></i>
@@ -253,7 +204,7 @@
 											</span>Fichier candidature
 										</a>
 									</li>
-									<li class="">
+									<li class="{{ isActive1(["admin_candidature_formation_listing", "admin_candidature_formation_retenu", "admin_candidature_formation_exportation"]) }}">
 										<a href="{{ path('admin_candidature_formation_listing') }}" class="waves-effect waves-dark">
 											<span class="pcoded-micon">
 												<i class="ti-layout-grid3-alt"></i>
@@ -261,7 +212,7 @@
 											</span>Liste retenus
 										</a>
 									</li>
-									<li class="">
+									<li class="{{ isActive1(["admin_categorie", "admin_creation_categorie", "admin_edition_categorie", "admin_suppresion_categorie"]) }}">
 										<a href="{{ path("admin_categorie") }}" class="waves-effect waves-dark">
 											<span class="pcoded-micon">
 												<i class="ti-layout-list-thumb"></i>
@@ -269,7 +220,7 @@
 											</span>Categorie
 										</a>
 									</li>
-									<li class="">
+									<li class="{{ isActive1(["admin_ville", "admin_creation_ville", "admin_edition_ville", "admin_suppression_ville", "importation_ville"]) }}">
 										<a href="{{ path("admin_ville") }}" class="">
 											<span class="pcoded-micon">
 												<i class="ti-layout-column3-alt"></i>
@@ -277,7 +228,7 @@
 											</span>Ville
 										</a>
 									</li>
-									<li class="">
+									<li class="{{ isActive1(["admin_utilisateur_liste", "admin_utilisateur_creation", "admin_utilisateur_edition", "admin_utilisateur_suppression"]) }}">
 										<a href="{{ path("admin_utilisateur_liste") }}" class="waves-effect waves-dark">
 											<span class="pcoded-micon">
 												<i class="ti-user"></i>
@@ -285,7 +236,15 @@
 											</span>Utilisateur
 										</a>
 									</li>
-									<li class="">
+									{# <li class="{{ isActive1(["admin_historique_connexion"]) }}">
+										<a href="{{ path("admin_historique_connexion") }}" class="waves-effect waves-dark">
+											<span class="pcoded-micon">
+												<i class="fa fa-th-large" aria-hidden="true"></i>
+												<b>D</b>
+											</span>Historique connexion
+										</a>
+									</li> #}
+									<li class="{{ isActive1(["admin_contact", "admin_contact_email", "admin_contact_sms"]) }}">
 										<a href="{{ path("admin_contact") }}" class="waves-effect waves-dark">
 											<span class="pcoded-micon">
 												<i class="fa fa-contao" aria-hidden="true"></i>
@@ -293,7 +252,7 @@
 											</span>Contact
 										</a>
 									</li>
-									<li class="">
+									<li class="{{ isActive1(["admin_parametre", "admin_edit_profil_parametre", "admin_edit_photo_parametre", "admin_edit_password_parametre"]) }}">
 										<a href="{{ path("admin_parametre") }}" class="waves-effect waves-dark">
 											<span class="pcoded-micon">
 												<i class="ti-settings"></i>
@@ -339,13 +298,27 @@
 									<div
 										class="page-wrapper">
 										<!-- Page-body start -->
-
-										<div class="page-body">
-											{% for message in app.flashes("success") %}
-												<div class="btn btn-success">
-													{{message}}
+										<div class='clearfix mb-3'>
+											<div class="row">
+												<div class="col-6">
+													<h2>{% block content_title %}
+														{% endblock%}
+													</h2>
 												</div>
-											{% endfor %}
+												<div class="col-6">
+													{% block content_buttons %}
+													{% endblock%}
+												</div>
+											</div>
+										</div>
+										<div class="page-body">
+											<div class='text-center'>
+												{% for message in app.flashes("success") %}
+													<div class="btn btn-success">
+														{{message}}
+													</div>
+												{% endfor %}
+											</div><br>
 											{% block body %}{% endblock %}
 										</div>
 										<!-- Page-body end -->
@@ -357,41 +330,42 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-
-		<!-- Required Jquery -->
-		<script type="text/javascript" src="{{ asset("assets/js/jquery/jquery.min.js") }}"></script>
-		<script type="text/javascript" src="{{ asset("assets/js/jquery-ui/jquery-ui.min.js") }} "></script>
-		<script type="text/javascript" src="{{ asset("assets/js/popper.js/popper.min.js") }}"></script>
-		<script type="text/javascript" src="{{ asset("assets/js/bootstrap/js/bootstrap.min.js") }} "></script>
-		<script type="text/javascript" src="assets/pages/widget/excanvas.js "></script>
-		<!-- waves js -->
-		<script src="{{ asset("assets/pages/waves/js/waves.min.js") }}"></script>
-		<!-- jquery slimscroll js -->
-		<script type="text/javascript" src="{{ asset("assets/js/jquery-slimscroll/jquery.slimscroll.js") }} "></script>
-		<!-- modernizr js -->
-		<script type="text/javascript" src="{{ asset("assets/js/modernizr/modernizr.js") }} "></script>
-		<!-- slimscroll js -->
-		<script type="text/javascript" src="{{ asset("assets/js/SmoothScroll.js") }}"></script>
-		<script src="{{ asset("assets/js/jquery.mCustomScrollbar.concat.min.js") }} "></script>
-		<!-- Chart js -->
-		<script type="text/javascript" src="{{ asset("assets/js/chart.js/Chart.js") }}"></script>
-		<!-- amchart js -->
-		<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-		<script src="{{ asset("assets/pages/widget/amchart/gauge.js") }}"></script>
-		<script src="{{ asset("assets/pages/widget/amchart/serial.js") }}"></script>
-		<script src="{{ asset("assets/pages/widget/amchart/light.js") }}"></script>
-		<script src="{{ asset("assets/pages/widget/amchart/pie.min.js") }}"></script>
-		<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-		<!-- menu js -->
-		<script src="{{ asset("assets/js/pcoded.min.js") }}"></script>
-		<script src="{{ asset("assets/js/vertical-layout.min.js") }} "></script>
-		<!-- custom js -->
-		<script type="text/javascript" src="{{ asset("assets/pages/dashboard/custom-dashboard.js") }}"></script>
-		<script type="text/javascript" src="{{ asset("assets/js/script.js") }} "></script>
-
+		</body>
 	</body>
-	{% block javascripts %}{% endblock %}
+</html></div><div class="modal fade" id="modale" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body" id="modale-body">
+			...
+		</div>
+	</div>
+</div></div><!-- Required Jquery --><script type="text/javascript" src="{{ asset("assets/js/jquery/jquery.min.js") }}"></script><script type="text/javascript" src="{{ asset("assets/js/jquery-ui/jquery-ui.min.js") }} "></script><script type="text/javascript" src="{{ asset("assets/js/popper.js/popper.min.js") }}"></script><script type="text/javascript" src="{{ asset("assets/js/bootstrap/js/bootstrap.min.js") }} "></script><script type="text/javascript" src="assets/pages/widget/excanvas.js "></script><!-- waves js --><script src="{{ asset("assets/pages/waves/js/waves.min.js") }}"></script><!-- jquery slimscroll js --><script type="text/javascript" src="{{ asset("assets/js/jquery-slimscroll/jquery.slimscroll.js") }} "></script><!-- modernizr js --><script type="text/javascript" src="{{ asset("assets/js/modernizr/modernizr.js") }} "></script><!-- slimscroll js --><script type="text/javascript" src="{{ asset("assets/js/SmoothScroll.js") }}"></script><script src="{{ asset("assets/js/jquery.mCustomScrollbar.concat.min.js") }} "></script><!-- Chart js --><script type="text/javascript" src="{{ asset("assets/js/chart.js/Chart.js") }}"></script><!-- amchart js --><script src="https://www.amcharts.com/lib/3/amcharts.js"></script><script src="{{ asset("assets/pages/widget/amchart/gauge.js") }}"></script><script src="{{ asset("assets/pages/widget/amchart/serial.js") }}"></script><script src="{{ asset("assets/pages/widget/amchart/light.js") }}"></script><script src="{{ asset("assets/pages/widget/amchart/pie.min.js") }}"></script><script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script><!-- menu js --><script src="{{ asset("assets/js/pcoded.min.js") }}"></script><script src="{{ asset("assets/js/vertical-layout.min.js") }} "></script><!-- custom js --><script type="text/javascript" src="{{ asset("assets/pages/dashboard/custom-dashboard.js") }}"></script><script type="text/javascript" src="{{ asset("assets/js/script.js") }} "></script>{# <script src="https://code.jquery.com/jquery-3.5.1.js"></script> #}<script src="https://unpkg.com/sleek-dashboard/dist/assets/js/sleek.bundle.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script><script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script><script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script><script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script><script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script><script>
+// Acc
+$(document).on("click", ".naccs .menu div", function () {
+var numberIndex = $(this).index();
 
-</html>
+if (!$(this).is("active")) {
+$(".naccs .menu div").removeClass("active");
+$(".naccs ul li").removeClass("active");
+
+$(this).addClass("active");
+$(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
+
+var listItemHeight = $(".naccs ul").find("li:eq(" + numberIndex + ")").innerHeight();
+$(".naccs ul").height(listItemHeight + "px");
+}
+});</script><script>
+$(document).ready(function () {
+
+$(".btn-actions").click(function (e) {
+e.preventDefault()
+$("#modale").modal("show")
+let url = $(this).attr("href")
+$('#modale-body').load(url);
+});
+}){% for message in app.flashes("success") %}Swal.fire({"icon": "success", "title": "Success", "text":"{{ message }}"}){% endfor %}{% for message in app.flashes("error") %}Swal.fire({"icon": "error", "title": "Erreur", "text":"{{ message }}"}){% endfor %}</script></body>{% block javascripts %}{% endblock %}</html>

@@ -7,6 +7,7 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
@@ -17,7 +18,7 @@ class EditCategorieType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('description', CKEditorType::class, [
+            ->add('description', TextType::class, [
                 'label'=> 'Description'
             ])
             ->add('petitedescription')

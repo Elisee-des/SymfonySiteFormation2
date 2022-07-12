@@ -137,13 +137,13 @@ class VilleController extends AbstractController
 
                 $em->persist($ville);
             }
-
+            
+            $em->flush();
+            
             $this->addFlash(
                 'message',
                 'vous avez importer avec succes votre fichier excel'
             );
-
-            $em->flush();
 
             return $this->redirectToRoute('admin_ville');
         }
