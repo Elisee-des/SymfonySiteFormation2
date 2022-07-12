@@ -19,25 +19,30 @@
 							<a href="{{ path("formations") }}" class="{{ isActive1(["formations"]) }}">Formations</a>
 						</li>
 						{# <li class="scroll-to-section"><a href="#about">A Propos</a></li>
-												              <li class="scroll-to-section"><a href="#portfolio">Realistion</a></li>#}
+																		              <li class="scroll-to-section"><a href="#portfolio">Realistion</a></li>#}
 						<li class="scroll-to-section">
 							<a href="" class="">Contact</a>
 						</li>
 						{% if app.user %}
+							<li class="scroll-to-section">
+								{# <div class="main-blue-button-hover "> #}
+									<a href="{{ path("admin_home") }}" class="btn-action {{ isActive1([" admin_home"]) }}">Tableau de bord</a>
+								{# </div> #}
+							</li>
 							<li class="scroll-to-section">
 								<div class="main-red-button-hover ">
 									<a href="{{ path("app_logout") }}" class="btn-action {{ isActive1([" app_logout"]) }}">Deconnexion</a>
 								</div>
 							</li>
 						{% else %}
-						<li class="scroll-to-section">
-							<a href="{{ path("utilisateur_creation_compte") }}" class="{{ isActive1(["utilisateur_creation_compte"]) }}">S'inscrire</a>
-						</li>
-						<li class="scroll-to-section">
-							<div class="main-red-button-hover ">
-								<a href="{{ path("app_login") }}" class="btn-action {{ isActive1([" app_login"]) }}">Connexion</a>
-							</div>
-						</li>
+							<li class="scroll-to-section">
+								<a href="{{ path("utilisateur_creation_compte") }}" class="{{ isActive1(["utilisateur_creation_compte"]) }}">S'inscrire</a>
+							</li>
+							<li class="scroll-to-section">
+								<div class="main-red-button-hover ">
+									<a href="{{ path("app_login") }}" class="btn-action {{ isActive1([" app_login"]) }}">Connexion</a>
+								</div>
+							</li>
 						{% endif %}
 					</ul>
 					<a class='menu-trigger'>

@@ -1,0 +1,49 @@
+{% extends "base.admin.html.twig" %}
+
+{% block titre %}Gestion des historiques de connexion
+{% endblock %}
+
+{% block content_title %}
+	Gestion des historiques de connexion
+{% endblock %}
+
+
+{% block content_buttons %}
+	
+{% endblock %}
+
+{% block body %}
+	<div class="card">
+		<br>
+
+		<div class="card-body">
+			<table id="exampl" class="table table-striped nowrap" style="width:100%">
+				<thead>
+					<tr>
+						<th scope="col">Nom</th>
+						<th scope="col">Prenom</th>
+						<th scope="col">DateConnexion</th>
+						<th scope="col">Position</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for historiqueConnexion in historiqueConnexions %}
+						<tr>
+							<th>{{historiqueConnexion.nom}}</th>
+							<th>{{historiqueConnexion.prenom}}</th>
+							<th>{{historiqueConnexion.dateConnexion|date("m/d/Y-H:m:s")}}</th>
+							<th>{{historiqueConnexion.ip}}</th>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+{% endblock %}
