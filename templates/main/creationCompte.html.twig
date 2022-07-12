@@ -1,0 +1,18 @@
+{% extends "base.main.html.twig" %}
+
+{% block titre %}{% endblock %}
+
+{% block main %}
+	<div class="card">
+		<div class="container">
+			<div class="card-body float-center">
+				<h3>Creer votre compte</h3><br>
+				{% form_theme form "bootstrap_4_layout.html.twig" %}
+
+				{{ form(form) }}
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

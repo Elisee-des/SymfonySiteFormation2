@@ -14,7 +14,7 @@
 			</div>
 		</div><br>
 		<ul class="pcoded-item pcoded-left-item">
-			<li class="active">
+			<li class="{{ isActive1(["utilisateur"]) }}">
 				<a href="{{ path("utilisateur") }}" class="waves-effect waves-dark">
 					<span class="pcoded-micon">
 						<i class="ti-home"></i>
@@ -24,7 +24,7 @@
 					<span class="pcoded-mcaret"></span>
 				</a>
 			</li>
-			<li>
+			<li >
 				<a href="{{ path("formations") }}">
 					<span class="pcoded-micon">
 						<i class="fa fa-list" aria-hidden="true"></i>
@@ -32,7 +32,7 @@
 					</span>
 					Formations</a>
 			</li>
-			<li>
+			<li class="{{ isActive1(["utilisateur_candidature_liste", "utilisature_supprimer_foramtion"]) }}">
 				<a href="{{ path("utilisateur_candidature_liste") }}">
 					<span class="pcoded-micon">
 						<i class="fa fa-indent" aria-hidden="true"></i>
@@ -40,7 +40,7 @@
 					</span>
 					Mes candidatures</a>
 			</li>
-			<li>
+			<li class="{{ isActive1(["user_favoris_foramtion", "user_enlever_foramtion"]) }}">
 				<a href="{{ path("user_favoris_foramtion") }}">
 					<span class="pcoded-micon">
 						<i class="fa fa-star-half-o" aria-hidden="true"></i>
@@ -48,7 +48,7 @@
 					</span>
 					Mes Favories</a>
 			</li>
-			<li>
+			<li class="{{ isActive1(["utilisateur_contact", "utilisateur_contact_sms", "utilisateur_contact_email"]) }}">
 				<a href="{{ path("utilisateur_contact") }}">
 					<span class="pcoded-micon">
 						<i class="fa fa-contao" aria-hidden="true"></i>
@@ -56,7 +56,7 @@
 					</span>
 					Contact</a>
 			</li>
-			<li>
+			<li class="{{ isActive1(["utlisateur_parametre", "utilisateur_edit_profil_parametre", "utilisateur_edit_photo_parametre", "utilisateur_edit_password_parametre", "utilisateur_parametre_desactivition"]) }}">
 				<a href="{{ path("utlisateur_parametre") }}">
 					<span class="pcoded-micon">
 						<i class="fa fa-user-circle" aria-hidden="true"></i>

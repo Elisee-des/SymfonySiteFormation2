@@ -1,30 +1,51 @@
 <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <img src="{{ asset("asset/images/logo.png") }}">
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="{{ path("main") }}" class="active">Acceuil</a></li>
-              <li class="scroll-to-section"><a href="{{ path("categories") }}">Categories</a></li>
-              <li class="scroll-to-section"><a href="{{ path("formations") }}">Formations</a></li>
-              {# <li class="scroll-to-section"><a href="#about">A Propos</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Realistion</a></li>
-              <li class="scroll-to-section"><a href="#contact">Contact</a></li>  #}
-              <li class="scroll-to-section"><a href="#contact">S'inscrire</a></li> 
-              <li class="scroll-to-section"><div class="main-red-button-hover"><a href="{{ path("app_login") }}">Connexion</a></div></li> 
-            </ul>      
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<nav class="main-nav">
+					<!-- ***** Logo Start ***** -->
+					<!-- ***** Logo End ***** -->
+						<a href="{{ path("main") }}" class="logo"> <img src="{{ asset("asset/images/logo.png") }}" width="20px">
+					</a>
+					<!-- ***** Menu Start ***** -->
+					<ul class="nav">
+						<li class="scroll-to-section">
+							<a href="{{ path("main") }}" class="{{ isActive1(["main"]) }}">Acceuil</a>
+						</li>
+						<li class="scroll-to-section">
+							<a href="{{ path("categories") }}" class="{{ isActive1(["categories"]) }}">Categories</a>
+						</li>
+						<li class="scroll-to-section">
+							<a href="{{ path("formations") }}" class="{{ isActive1(["formations"]) }}">Formations</a>
+						</li>
+						{# <li class="scroll-to-section"><a href="#about">A Propos</a></li>
+												              <li class="scroll-to-section"><a href="#portfolio">Realistion</a></li>#}
+						<li class="scroll-to-section">
+							<a href="" class="">Contact</a>
+						</li>
+						{% if app.user %}
+							<li class="scroll-to-section">
+								<div class="main-red-button-hover ">
+									<a href="{{ path("app_logout") }}" class="btn-action {{ isActive1([" app_logout"]) }}">Deconnexion</a>
+								</div>
+							</li>
+						{% else %}
+						<li class="scroll-to-section">
+							<a href="{{ path("utilisateur_creation_compte") }}" class="{{ isActive1(["utilisateur_creation_compte"]) }}">S'inscrire</a>
+						</li>
+						<li class="scroll-to-section">
+							<div class="main-red-button-hover ">
+								<a href="{{ path("app_login") }}" class="btn-action {{ isActive1([" app_login"]) }}">Connexion</a>
+							</div>
+						</li>
+						{% endif %}
+					</ul>
+					<a class='menu-trigger'>
+						<span>Menu</span>
+					</a>
+					<!-- ***** Menu End ***** -->
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
