@@ -25,6 +25,7 @@ class CategorieController extends AbstractController
     {
         return $this->render('admin/categorie/index.html.twig', [
             'categories' => $categorieRepo->findAll(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -63,6 +64,7 @@ class CategorieController extends AbstractController
         }
         return $this->render('admin/categorie/creation.html.twig', [
             'form' => $form->createView(),
+            'admin' => $this->getUser()
 
         ]);
     }
@@ -101,6 +103,7 @@ class CategorieController extends AbstractController
         }
         return $this->render('admin/categorie/edition.html.twig', [
             'form' => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 

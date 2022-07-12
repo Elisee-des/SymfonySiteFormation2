@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 /**
  * @Route("/admin", name="admin_")
  */
@@ -38,6 +39,7 @@ class AdminController extends AbstractController
         $categories = $categorieRepository->findAll();
         $users = $userRepository->findAll();
         $villes = $villeRepository->findAll();
+        $user = $this->getUser();
 
         $totalFormation = count($formations);
         $totalCategorie = count($categories);
@@ -50,7 +52,20 @@ class AdminController extends AbstractController
             'totalCandidatures' => $totalCandidature,
             'totalCategories' => $totalCategorie,
             'totalVille' => $totalVille,
-            'totalUser' => $totalUser
+            'totalUser' => $totalUser,
+            'admin' => $user
+        ]);
+    }
+
+    /**
+     * @Route("/identifiant", name="identifiant")
+     */
+    public function identifiant(): Response
+    {
+        $user = $this->getUser();
+
+        return $this->render('admin/identifiant.html.twig', [
+            'admin' => $user
         ]);
     }
 
@@ -59,7 +74,9 @@ class AdminController extends AbstractController
      */
     public function parametre(): Response
     {
-        return $this->render('admin/parametre/index.html.twig');
+        return $this->render('admin/parametre/index.html.twig', [
+            'admin' => $this->getUser()
+        ]);
     }
 
 
@@ -88,7 +105,8 @@ class AdminController extends AbstractController
         }
 
         return $this->render('admin/parametre/editProfil.html.twig', [
-            "form" => $form->createView()
+            "form" => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -127,7 +145,8 @@ class AdminController extends AbstractController
         }
 
         return $this->render('admin/parametre/editPhoto.html.twig', [
-            "form" => $form->createView()
+            "form" => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -161,7 +180,8 @@ class AdminController extends AbstractController
         }
 
         return $this->render('admin/parametre/editPassword.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 }

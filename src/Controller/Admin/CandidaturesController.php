@@ -30,6 +30,7 @@ class CandidaturesController extends AbstractController
 
         return $this->render('admin/candidatures/index.html.twig', [
             'candidatures' => $candidatureRepository->findAll(["id" => "DESC"]),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -76,6 +77,7 @@ class CandidaturesController extends AbstractController
 
         return $this->render('admin/candidatures/creation.html.twig', [
             'form' => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -119,7 +121,8 @@ class CandidaturesController extends AbstractController
 
         return $this->render('admin/candidatures/edition.html.twig', [
             'form' => $form->createView(),
-            "nomCandidature" => $candidature->getNom()
+            "nomCandidature" => $candidature->getNom(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -147,7 +150,8 @@ class CandidaturesController extends AbstractController
     {
 
         return $this->render('admin/candidatures/indexExportation.html.twig', [
-            'formations' => $formationRepository->findAll()
+            'formations' => $formationRepository->findAll(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -162,6 +166,7 @@ class CandidaturesController extends AbstractController
         return $this->render('admin/candidatures/retenuCandidature.html.twig', [
             'titre' => $formation->getTitre(),
             'retenues' => $retenues,
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -181,6 +186,7 @@ class CandidaturesController extends AbstractController
 
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
+            'admin' => $this->getUser()
         ]);
     }
 }

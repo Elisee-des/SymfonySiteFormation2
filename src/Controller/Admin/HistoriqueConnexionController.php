@@ -38,7 +38,8 @@ class HistoriqueConnexionController extends AbstractController
         // $historiqueConnexions = $paginatorInterface->paginate($donnees, $request->query->getInt("page", 1), 20);
 
         return $this->render("admin/historiqueConnexion/index.html.twig", [
-            "historiqueConnexions"=>$historiqueConnexions
+            "historiqueConnexions"=>$historiqueConnexions,
+            'admin' => $this->getUser()
         ]);
     }
 

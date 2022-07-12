@@ -17,7 +17,9 @@ class AdminContactController extends AbstractController
      */
     public function contact(): Response
     {
-        return $this->render('admin/contact/index.html.twig', []);
+        return $this->render('admin/contact/index.html.twig', [
+            'admin' => $this->getUser()
+        ]);
     }
 
     /**
@@ -54,7 +56,8 @@ class AdminContactController extends AbstractController
         }
 
         return $this->render('admin/contact/email.html.twig', [
-            "form" => $form->createView()
+            "form" => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -107,7 +110,8 @@ class AdminContactController extends AbstractController
         }
 
         return $this->render('admin/contact/sms.html.twig', [
-            "form" => $form->createView()
+            "form" => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 }

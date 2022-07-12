@@ -2,7 +2,8 @@
 <html lang="en">
 
 	<head>
-		<title>{% block titre %}{% endblock %}
+		<title>
+			{% block titre %}{% endblock %}
 		</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -149,24 +150,7 @@
 							<div class="pcoded-inner-navbar main-menu">
 								<div class="">
 									<div class="main-menu-header">
-										<img class="img-80 img-radius" src="{{ asset("assets/images/avatar-4.jpg") }}" alt="User-Profile-Image">
-										<div class="user-details">
-											<span id="more-details">Nom user<i class="fa fa-caret-down"></i>
-											</span>
-										</div>
-									</div>
-
-									<div class="main-menu-content">
-										<ul>
-											<li class="more-details">
-												<a href="user-profile.html">
-													<i class="ti-user"></i>View Profile</a>
-												<a href="#!">
-													<i class="ti-settings"></i>Settings</a>
-												<a href="auth-normal-sign-in.html">
-													<i class="ti-layout-sidebar-left"></i>Logout</a>
-											</li>
-										</ul>
+										{% include "admin/identifiant.html.twig" %}
 									</div>
 								</div><br>
 								<ul class="pcoded-item pcoded-left-item">
@@ -176,11 +160,11 @@
 												<i class="ti-home"></i>
 												<b>D</b>
 											</span>
-											<span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+											<span class="pcoded-mtext" data-i18n="nav.dash.main">Tableau de bord</span>
 											<span class="pcoded-mcaret"></span>
 										</a>
 									</li>
-									<li class="book-information-variant {{ isActive1(["admin_formation_liste", "admin_formation_detail", " admin_formation_creation", " admin_formation_edition", " admin_formation_suppression"," admin_formation_candidature"," admin_formation_candidaure_suppression"," admin_formation_active_formation"," admin_formation_desactive_formation"," admin_formation_gestion_status"]) }}">
+									<li class="book-information-variant {{ isActive1([" admin_formation_liste", " admin_formation_detail", " admin_formation_creation", " admin_formation_edition", " admin_formation_suppression"," admin_formation_candidature"," admin_formation_candidaure_suppression"," admin_formation_active_formation"," admin_formation_desactive_formation"," admin_formation_gestion_status"]) }}">
 										<a href="{{ path("admin_formation_liste") }}" class="waves-effect waves-dark ">
 											<span class="pcoded-micon">
 												<i class="fa fa-list" aria-hidden="true"></i>
@@ -271,19 +255,19 @@
 									<div class="row align-items-center">
 										<div class="col-md-8">
 											<div class="page-header-title">
-												<h5 class="m-b-10">Dashboard</h5>
-												<p class="m-b-0">Welcome to Mega Able</p>
+												<h5 class="m-b-10">Tableau de bord</h5>
+												<p class="m-b-0">Bienvenu a vous</p>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<ul class="breadcrumb-title">
 												<li class="breadcrumb-item">
-													<a href="index.html">
+													<a href="{{ path('admin_home') }}">
 														<i class="fa fa-home"></i>
 													</a>
 												</li>
 												<li class="breadcrumb-item">
-													<a href="#!">Dashboard</a>
+													<a href="{{ path("app_logout") }}" class="">Deconnexion</a>
 												</li>
 											</ul>
 										</div>

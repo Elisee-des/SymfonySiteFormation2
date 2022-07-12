@@ -31,6 +31,7 @@ class FormationController extends AbstractController
         
         return $this->render('admin/formation/index.html.twig', [
             'formations' => $formations,
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -48,6 +49,7 @@ class FormationController extends AbstractController
             'dateDebutFormation' => $formation->getDateDebutFormation(),
             'dateFinFormation' => $formation->getDateFinFormation(),
             'nomCategorie' => $formation->getCategorie()->getNom(),
+            'admin' => $this->getUser(),
             ''
         ]);
     }
@@ -87,7 +89,8 @@ class FormationController extends AbstractController
         }
 
         return $this->render('admin/formation/creation.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -125,7 +128,8 @@ class FormationController extends AbstractController
         }
 
         return $this->render('admin/formation/edition.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -156,7 +160,8 @@ class FormationController extends AbstractController
 
         return $this->render("admin/formation/candidatures.html.twig", [
             'titre' => $titre,
-            'candidats' => $candidats
+            'candidats' => $candidats,
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -171,6 +176,7 @@ class FormationController extends AbstractController
         $fichiers = $formation->getCandidatures();
         return $this->render("admin/formation/fichiersDetail.html.twig", [
             // 'fichiers' => $fichiers
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -237,6 +243,7 @@ class FormationController extends AbstractController
 
         return $this->render('admin/formation/status.html.twig', [
             'form' => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 

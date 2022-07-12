@@ -29,6 +29,7 @@ class VilleController extends AbstractController
     {
         return $this->render('admin/ville/index.html.twig', [
             'villes' => $villeRepo->findAll(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -57,6 +58,7 @@ class VilleController extends AbstractController
         }
         return $this->render('admin/ville/creation.html.twig', [
             'form' => $form->createView(),
+            'admin' => $this->getUser()
 
         ]);
     }
@@ -83,6 +85,7 @@ class VilleController extends AbstractController
         }
         return $this->render('admin/ville/edition.html.twig', [
             'form' => $form->createView(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -150,7 +153,7 @@ class VilleController extends AbstractController
 
         return $this->render('admin/ville/importation.html.twig', [
             'form' => $form->createView(),
-
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -213,7 +216,7 @@ class VilleController extends AbstractController
 
     //     return $this->render('admin/ville/exportation.html.twig', [
     //         'form' => $form->createView(),
-
+        //'admin' => $this->getUser()
     //     ]);
     // }
 }

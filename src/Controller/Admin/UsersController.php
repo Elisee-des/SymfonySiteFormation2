@@ -33,6 +33,7 @@ class UsersController extends AbstractController
 
         return $this->render('admin/users/index.html.twig', [
             'users' => $userRepo->findAll(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -77,7 +78,7 @@ class UsersController extends AbstractController
         }
         return $this->render('admin/users/creation.html.twig', [
             'form' => $form->createView(),
-
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -120,7 +121,7 @@ class UsersController extends AbstractController
         }
         return $this->render('admin/users/edition.html.twig', [
             'form' => $form->createView(),
-
+            'admin' => $this->getUser()
         ]);
     }
 

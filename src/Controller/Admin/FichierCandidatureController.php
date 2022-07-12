@@ -27,7 +27,8 @@ class FichierCandidatureController extends AbstractController
     {
 
         return $this->render('admin/formation/indexFichier.html.twig', [
-            'formations' => $formationRepository->findAll()
+            'formations' => $formationRepository->findAll(),
+            'admin' => $this->getUser()
         ]);
     }
 
@@ -41,7 +42,8 @@ class FichierCandidatureController extends AbstractController
 
         return $this->render("admin/formation/fichiersCandidatures.html.twig", [
             'titre' => $titre,
-            'candidats' => $candidats
+            'candidats' => $candidats,
+            'admin' => $this->getUser()
         ]);
     }
 
