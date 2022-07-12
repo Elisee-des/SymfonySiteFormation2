@@ -3,6 +3,7 @@
 namespace App\Controller\Main;
 
 use App\Form\ContactMainType;
+use App\Form\ContactssType;
 use App\Repository\CategorieRepository;
 use App\Repository\FormationRepository;
 use Mail;
@@ -23,9 +24,9 @@ class MainController extends AbstractController
         $form = $this->createForm(ContactMainType::class);
 
         $contact = $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid()) { 
-            
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
             $sujet = $contact->get('sujet')->getData();
             $message = $contact->get('message')->getData();
 
@@ -33,14 +34,14 @@ class MainController extends AbstractController
             $mail->sendToAdmin($message, $sujet);
 
             $this->addFlash(
-               'message',
-               'Votre email a bien ete envoyez. nous recontacterons sous peu'
+                'message',
+                'Votre email a bien ete envoyez. nous recontacterons sous peu'
             );
         }
 
         return $this->render('main/index.html.twig', [
             "categories" => $categorieRepository->findAll(),
-            "form"=>$form->createView()
+            "form" => $form->createView()
         ]);
     }
 
@@ -119,4 +120,21 @@ class MainController extends AbstractController
         return " cool";
     }
 
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact(Request $request): Response
+    {
+        $form = $this->createForm(ContactssType::class);
+
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) { 
+            
+        }
+
+        return $this->render('main/contactss.html.twig', [
+            "form"=>$form->createView()
+        ]);
+    }
 }
