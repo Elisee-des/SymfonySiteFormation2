@@ -34,7 +34,7 @@ class EmailContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $email = new Mail();
-            $email->send($emailTo, $nom, $sujet, $message);
+            $email->sendMailToAdmin($emailTo, $nom, $sujet, $message);
 
             $this->addFlash(
                 'message',

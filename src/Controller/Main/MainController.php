@@ -21,27 +21,9 @@ class MainController extends AbstractController
      */
     public function index(Request $request, CategorieRepository $categorieRepository): Response
     {
-        $form = $this->createForm(ContactMainType::class);
-
-        $contact = $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $sujet = $contact->get('sujet')->getData();
-            $message = $contact->get('message')->getData();
-
-            $mail = new Mail();
-            $mail->sendToAdmin($message, $sujet);
-
-            $this->addFlash(
-                'message',
-                'Votre email a bien ete envoyez. nous recontacterons sous peu'
-            );
-        }
 
         return $this->render('main/index.html.twig', [
             "categories" => $categorieRepository->findAll(),
-            "form" => $form->createView()
         ]);
     }
 

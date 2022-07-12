@@ -16,12 +16,6 @@ class SMSContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('numero', null, [
-                'label' => 'Numero du destinateur preceder +226',
-                'attr'=>[
-                    'placeholder'=>'Exemple: +22656885237'
-                ]
-            ])  
             ->add('message', TextareaType::class, [
                 'label' => 'Message',
                 'attr'=>[

@@ -25,16 +25,18 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for candidature in candidatures %}
-						<tr>
-							<td>{{candidature.formation.titre}}</td>
-							<td>{{candidature.nom}}</td>
-							<td>{{candidature.prenom}}</td>
-							<td>
-								<a href="{{ path("admin_candidature_edition", {id: candidature.id}) }}" class="btn btn-primary">Editer</a>
-								<a href="{{ path("admin_candidature_suppression", {id: candidature.id}) }}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir supprimer cette candidature ?')">Supprimer</a>
-							</td>
-						</tr>
+					{% for formation in formations %}
+						{% for candidature in formation.candidatures %}
+							<tr>
+								<td>{{candidature.formation.titre}}</td>
+								<td>{{candidature.nom}}</td>
+								<td>{{candidature.prenom}}</td>
+								<td>
+									<a href="{{ path("admin_candidature_edition", {id: candidature.id}) }}" class="btn btn-outline-primary">Editer</a>
+									<a href="{{ path("admin_candidature_suppression", {id: candidature.id}) }}" class="btn btn-outline-danger" onclick="return confirm('Etes vous sur de vouloir supprimer cette candidature ?')">Supprimer</a>
+								</td>
+							</tr>
+						{% endfor %}
 					{% endfor %}
 				</tbody>
 			</table>

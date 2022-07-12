@@ -72,7 +72,7 @@ class Mail
         $response->success() && var_dump($response->getData());
     }
 
-    public function sendFromAdmin($mailTo, $nom,  $subject, $message)
+    public function sendMailFromAdmin($mailTo, $nom,  $subject, $message)
     {
         $mj = new Client($this->api_key, $this->api_key_private, true, ['version' => 'v3.1']);
 

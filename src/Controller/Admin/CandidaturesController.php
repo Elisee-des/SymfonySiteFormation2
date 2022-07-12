@@ -25,11 +25,11 @@ class CandidaturesController extends AbstractController
     /**
      * @Route("/liste/", name="liste")
      */
-    public function index(CandidatureRepository $candidatureRepository): Response
+    public function index(FormationRepository $formationRepository): Response
     {
 
         return $this->render('admin/candidatures/index.html.twig', [
-            'candidatures' => $candidatureRepository->findAll(["id" => "DESC"]),
+            'formations' => $formationRepository->findAll(["id" => "DESC"]),
             'admin' => $this->getUser()
         ]);
     }

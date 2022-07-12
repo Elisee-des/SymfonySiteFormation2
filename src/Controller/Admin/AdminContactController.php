@@ -45,11 +45,11 @@ class AdminContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // dd($request);
             $email = new Mail();
-            $email->send($emailTo, $nom, $sujet, $message);
+            $email->sendMailFromAdmin($emailTo, $nom, $sujet, $message);
 
             $this->addFlash(
                 'message',
-                "Votre email a bien ete envoyez. Nous vous contacterons bientot"
+                "Votre email a bien ete envoyez."
             );
 
             // return $this->redirectToRoute('admin_contact');

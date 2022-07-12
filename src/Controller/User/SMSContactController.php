@@ -33,13 +33,12 @@ class SMSContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $message = $request->get('sms_contact')['message'];
-            $numeroDestinateur = $request->get('sms_contact')['numero'];
 
             $url="https://www.aqilas.com/api/v1/sms";
 
             $data=[
                 "from"=>"Sabidani",
-                "to"=>[$numeroDestinateur],
+                "to"=>["+22656885237"],
                 "text"=>$message
             ];
             $dataJson = json_encode($data);
