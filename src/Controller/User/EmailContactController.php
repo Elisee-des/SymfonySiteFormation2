@@ -2,6 +2,7 @@
 
 namespace App\Controller\User;
 
+use App\Form\ContactssType;
 use App\Form\ContactType;
 use Mail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,35 +17,27 @@ class EmailContactController extends AbstractController
      */
     public function contactEmail(Request $request): Response
     {
-        /**
-         * @var User
-         */
-        $user = $this->getUser();
-        $form = $this->createForm(ContactType::class);
+        $form = $this->createForm(ContactssType::class);
 
         $contact = $form->handleRequest($request);
 
-        // $emailTo = $user->getEmail();
-        // $name = $user->getNom();
-        $emailTo =  $contact->get('email')->getData();
-        $sujet = $contact->get('sujet')->getData();
-        $message = $contact->get('message')->getData();
-        $nom = $contact->get('nom')->getData();
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $prenom = $contact->get("prenom")->getData();
+            $email = $contact->get("email")->getData();
+            $sujet = $contact->get("sujet")->getData();
+            $message = $contact->get("message")->getData() . " ' envoyez par " . $prenom . " a d'adress email: " . $email;
 
             $email = new Mail();
-            $email->sendMailToAdmin($emailTo, $nom, $sujet, $message);
+            $email->sendMailToAdmin($sujet, $message);
 
             $this->addFlash(
-                'message',
-                "Votre email a bien ete envoyez. Nous vous contacterons bientot"
+                'success',
+                'Votre email a ete envoyez avrc success. nous concterons plutard'
             );
 
-            // return $this->redirectToRoute('utilisateur_contact');
+            // var_dump($email);
+
         }
-
-
 
         return $this->render('user/contact/email.html.twig', [
             "form" => $form->createView(),

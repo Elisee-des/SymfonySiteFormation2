@@ -16,10 +16,11 @@ class SMSContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('numero')
             ->add('message', TextareaType::class, [
                 'label' => 'Message',
-                'attr'=>[
-                    'placeholder'=>'Saisissez la votre message'
+                'attr' => [
+                    'placeholder' => 'Saisissez la votre message'
                 ]
             ])
             ->add('Envoyez', SubmitType::class);

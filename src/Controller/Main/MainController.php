@@ -125,7 +125,7 @@ class MainController extends AbstractController
                'Votre email a ete envoyez avrc success. nous concterons plutard'
             );
 
-            var_dump($email);
+            // var_dump($email);
 
         }
 

@@ -42,36 +42,6 @@ class Mail
         $response->success() && var_dump($response->getData());
     }
 
-    public function sendToAdmin($subject, $message)
-    {
-        $mj = new Client($this->api_key, $this->api_key_private, true, ['version' => 'v3.1']);
-
-        $body = [
-            'Messages' => [
-                [
-                    'From' => [
-                        'Email' => "yentemasabidani@gmail.com",
-                        'Name' => "Yentema"
-                    ],
-                    'To' => [
-                        [
-                            'Email' => 'yentemasabidani@gmail.com',
-                            'Name' => 'Yentema'
-                        ]
-                    ],
-                    'TemplateID' => 4046162,
-                    'TemplateLanguage' => true,
-                    'Subject' => $subject,
-                    'Variables' => [
-                        'context' => $message
-                    ]
-                ]
-            ]
-        ];
-        $response = $mj->post(Resources::$Email, ['body' => $body]);
-        $response->success() && var_dump($response->getData());
-    }
-
     public function sendMailFromAdmin($mailTo, $nom,  $subject, $message)
     {
         $mj = new Client($this->api_key, $this->api_key_private, true, ['version' => 'v3.1']);
